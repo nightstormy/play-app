@@ -8,10 +8,7 @@ import TouchButton from '../components/TouchButton'
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-
-    console.log('min', min)
-    console.log('max', max)
-
+    
     const rndNum = Math.floor((max + min) / 2);
 
     if (rndNum === exclude) {
@@ -52,10 +49,6 @@ const GameScreen = props => {
         } else {
             currentLow.current = currentGuess
         }
-
-        console.log(currentGuess)
-        console.log('alta', currentHigh.current)
-        console.log('baja', currentLow.current)
 
         const nextNumber = generateRandomBetween(currentLow.current, currentHigh.current, currentGuess)
 
