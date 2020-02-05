@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
-import TouchButton from '../components/TouchButton'
-import Colors from '../constants/colors'
+import TouchButton from '../../components/TouchButton'
+import Colors from '../../constants/colors'
 
 const GameOverScreen = props => {
 

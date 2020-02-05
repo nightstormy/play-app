@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
 
-import NumberContainer from '../components/NumberContainer'
-import Card from '../components/Card'
-import TouchButton from '../components/TouchButton'
+import NumberContainer from '../../components/NumberContainer'
+import Card from '../../components/Card'
+import TouchButton from '../../components/TouchButton'
 
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);

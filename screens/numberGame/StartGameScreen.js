@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
-import Card from '../components/Card'
-import Colors from '../constants/colors'
-import Input from '../components/Input'
-import TouchButton from '../components/TouchButton'
-import NumberContainer from '../components/NumberContainer'
+import Card from '../../components/Card'
+import Colors from '../../constants/colors'
+import Input from '../../components/Input'
+import TouchButton from '../../components/TouchButton'
+import NumberContainer from '../../components/NumberContainer'
 
 class StartGameScreen extends Component {
     constructor(props) {
