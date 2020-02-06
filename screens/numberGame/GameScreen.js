@@ -8,7 +8,7 @@ import TouchButton from '../../components/TouchButton'
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    
+
     const rndNum = Math.floor((max + min) / 2);
 
     if (rndNum === exclude) {
@@ -27,7 +27,7 @@ const GameScreen = props => {
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
 
-    const { userChoice, onGameOver } = props
+    const { userChoice, onGameOver, onRestart } = props
 
     useEffect(() => {
         if (currentGuess === userChoice) {
@@ -67,18 +67,28 @@ const GameScreen = props => {
             <Card style={styles.buttonContainer}>
                 <View style={styles.button}>
                     <TouchButton
-                        style={{ backgroundColor: 'green' }}
+                        style={{ backgroundColor: 'purple' }}
                         onPress={nextGuessHandler.bind(this, 'lower')}
                     >
-                        <Text style={styles.textButton}>Menor</Text>
+                        <Text style={styles.textButton}>Menor -</Text>
                     </TouchButton>
                 </View>
                 <View style={styles.button}>
                     <TouchButton
-                        style={{ backgroundColor: 'red' }}
+                        style={{ backgroundColor: '#36bed6' }}
                         onPress={nextGuessHandler.bind(this, 'greater')}
                     >
-                        <Text style={styles.textButton}>Mayor</Text>
+                        <Text style={styles.textButton}>Mayor +</Text>
+                    </TouchButton>
+                </View>
+            </Card>
+            <Card style={{ marginTop: 10 }}>
+                <View>
+                    <TouchButton
+                        style={{ backgroundColor: '#2285d6' }}
+                        onPress={onRestart}
+                    >
+                        <Text style={styles.textButton}>Reiniciar Juego</Text>
                     </TouchButton>
                 </View>
             </Card>

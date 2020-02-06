@@ -3,19 +3,35 @@ import { createAppContainer } from 'react-navigation';
 import StartGameScreen from '../screens/numberGame/StartGameScreen';
 import GameScreen from '../screens/numberGame/GameScreen';
 import GameOverScreen from '../screens/numberGame/GameOverScreen';
+import MasterNumberGame from '../screens/numberGame/MasterNumberGame';
+import Home from '../screens/layout/Home.js'
+import Test from '../screens/test/test.js'
+import Test2 from '../screens/test/test2.js'
 
 const screens = {
-    StartGameScreen: {
-        screen: StartGameScreen
+    Home: {
+        screen: Home,
+        navigationOptions: {
+            title: 'Inicio'
+        }
     },
-    GameScreen: {
-        screen: GameScreen
+    Test: {
+        screen: Test
     },
-    GameOverScreen: {
-        screen: GameOverScreen
+    Test2: {
+        screen: Test2
+    },
+    NumberGame: {
+        screen: MasterNumberGame
     }
 }
 
-const HomeStack = createStackNavigator(screens);
+const HomeStack = createStackNavigator(screens, {
+    defaultNavigationOptions: {
+        headerStyle: { backgroundColor: 'black', height: 100 },
+        headerTintColor: 'white',
+        headerTitleStyle: { fontWeight: 'bold' }
+    }
+});
 
 export default createAppContainer(HomeStack)
