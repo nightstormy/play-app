@@ -1,12 +1,9 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import StartGameScreen from '../screens/numberGame/StartGameScreen';
-import GameScreen from '../screens/numberGame/GameScreen';
-import GameOverScreen from '../screens/numberGame/GameOverScreen';
 import MasterNumberGame from '../screens/numberGame/MasterNumberGame';
-import Home from '../screens/layout/Home.js'
-import Test from '../screens/test/test.js'
-import Test2 from '../screens/test/test2.js'
+import Home from '../screens/layout/Home.js';
+import Test from '../screens/test/test.js';
+import Test2 from '../screens/test/test2.js';
 
 const screens = {
     Home: {
