@@ -23,25 +23,7 @@ const Test = props => {
     ])
 
     return (
-        <View style={styles.screen}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <View style={styles.button}>
-                    <TouchButton
-                        style={{ backgroundColor: '#2285d6', padding: 30 }}
-                        onPress={pressHandler}
-                    >
-                        <Text style={styles.textButton}>Home</Text>
-                    </TouchButton>
-                </View>
-                <View style={styles.button}>
-                    <TouchButton
-                        style={{ backgroundColor: '#2285d6', padding: 30 }}
-                        onPress={pressHandler2}
-                    >
-                        <Text style={styles.textButton}>Number Game</Text>
-                    </TouchButton>
-                </View>
-            </View>
+        <View style={styles.screen}>            
             <Card>
                 <View>
                     <FlatList data={test} renderItem={({ item }) => (

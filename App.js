@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Navigator from './routes/HomeStack'
+import Navigator from './routes/Drawer'
 
 export default function App() {
   return (

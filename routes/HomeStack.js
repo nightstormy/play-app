@@ -1,22 +1,17 @@
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+import React from 'react';
+import { createStackNavigator, TransitionPresets } from 'react-navigation-stack';
+import { View } from 'react-native'
 import MasterNumberGame from '../screens/numberGame/MasterNumberGame';
 import Home from '../screens/layout/Home.js';
-import Test from '../screens/test/test.js';
-import Test2 from '../screens/test/test2.js';
+import Header from '../components/Header';
+
 
 const screens = {
     Home: {
         screen: Home,
         navigationOptions: {
-            title: 'Inicio'
+            header: () => <Header />
         }
-    },
-    Test: {
-        screen: Test
-    },
-    Test2: {
-        screen: Test2
     },
     NumberGame: {
         screen: MasterNumberGame
@@ -27,8 +22,13 @@ const HomeStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         headerStyle: { backgroundColor: 'black', height: 100 },
         headerTintColor: 'white',
-        headerTitleStyle: { fontWeight: 'bold' }
+        headerTitleStyle: {
+            textAlign: 'center',
+            flexGrow: 1,
+            alignSelf: 'center',
+        },
+        ...TransitionPresets.SlideFromRightIOS
     }
 });
 
-export default createAppContainer(HomeStack)
+export default HomeStack;
