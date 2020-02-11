@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import TouchButton from '../../components/TouchButton'
-import { FlatList } from 'react-native-gesture-handler';
 
-const Test2 = props => {
+import React from 'react'
+import { Text, View, StyleSheet } from 'react-native';
+import Card from '../../components/Card'
+
+const ListaDetalle = props => {
 
     const { navigation } = props
 
     return (
+
         <View style={styles.screen}>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Card>
                 <Text>{navigation.getParam('title')}</Text>
                 <Text>{navigation.getParam('body')}</Text>
                 <Text>{navigation.getParam('rating')}</Text>
-            </View>
+            </Card>
         </View>
     )
 }
@@ -25,4 +26,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Test2
+export default ListaDetalle

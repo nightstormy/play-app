@@ -1,14 +1,14 @@
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import HomeStack from '../routes/HomeStack'
-import TestStack from '../routes/TestStack'
+import ListaStack from '../routes/ListaStack'
 
 const RootDrawerNavigator = createDrawerNavigator({
-    HomeStack: {
+    'Inicio': {
         screen: HomeStack
     },
-    TestStack: {
-        screen: TestStack
+    'Lista de prueba': {
+        screen: ListaStack
     },
 
 })

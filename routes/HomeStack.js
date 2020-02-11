@@ -9,12 +9,17 @@ import Header from '../components/Header';
 const screens = {
     Home: {
         screen: Home,
-        navigationOptions: {
-            header: () => <Header />
+        navigationOptions: ({ navigation }) => {
+            return {
+                header: () => <Header title="m2-project" navigation={navigation} />
+            }
         }
     },
     NumberGame: {
-        screen: MasterNumberGame
+        screen: MasterNumberGame,
+        navigationOptions: {
+            title: "Adivina el Numero!"
+        }
     }
 }
 
@@ -22,11 +27,7 @@ const HomeStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         headerStyle: { backgroundColor: 'black', height: 100 },
         headerTintColor: 'white',
-        headerTitleStyle: {
-            textAlign: 'center',
-            flexGrow: 1,
-            alignSelf: 'center',
-        },
+        headerTitleStyle: { fontWeight: 'bold' },
         ...TransitionPresets.SlideFromRightIOS
     }
 });

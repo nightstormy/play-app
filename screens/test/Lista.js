@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import TouchButton from '../../components/TouchButton'
 import { FlatList } from 'react-native-gesture-handler';
 import Card from '../../components/Card'
 
-const Test = props => {
+const Lista = props => {
 
     const { navigation } = props;
 
@@ -16,7 +15,7 @@ const Test = props => {
         navigation.navigate('NumberGame')
     }
 
-    const [test, setTest] = useState([
+    const [Lista, setLista] = useState([
         { title: 'Century', rating: 1, body: 'lorem ipsun katsum indoloro', key: '1' },
         { title: 'Gnavi', rating: 2, body: 'lorem ipsun lelum indoloro', key: '2' },
         { title: 'Divisas', rating: 3, body: 'lorem ipsun podam indoloro', key: '3' }
@@ -26,8 +25,8 @@ const Test = props => {
         <View style={styles.screen}>            
             <Card>
                 <View>
-                    <FlatList data={test} renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => navigation.navigate('Test2', item)}>
+                    <FlatList data={Lista} renderItem={({ item }) => (
+                        <TouchableOpacity onPress={() => navigation.navigate('ListaDetalle', item)}>
                             <Text style={{ fontSize: 18, padding: 10, fontWeight: '600' }}>{item.title}</Text>
                         </TouchableOpacity>
                     )}
@@ -56,4 +55,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Test
+export default Lista
