@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Header from '../../components/Header'
 import StartGameScreen from './StartGameScreen'
 import GameScreen from './GameScreen'
 import GameOverScreen from './GameOverScreen'
