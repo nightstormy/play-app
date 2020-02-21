@@ -24,6 +24,13 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: 'center',
   },
+  registerLogoText: {
+    fontSize: 30,
+    fontWeight: "600",
+    marginTop: 50,
+    marginBottom: 30,
+    textAlign: 'center',
+  },
   loginFormView: {
     flex: 1
   },
@@ -31,9 +38,21 @@ export const styles = StyleSheet.create({
     height: 43,
     fontSize: 14,
     borderRadius: 5,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#eaeaea',
-    backgroundColor: '#fafafa',
+    paddingLeft: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: 5,
+
+  },
+  loginFormTextInputFocused: {
+    height: 43,
+    fontSize: 14,
+    borderRadius: 5,
+    borderBottomWidth: 1,
+    borderColor: '#616161',
     paddingLeft: 10,
     marginLeft: 15,
     marginRight: 15,
