@@ -35,12 +35,11 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   loginFormTextInput: {
-    height: 43,
+    height: 40,
     fontSize: 14,
-    borderRadius: 5,
-    borderBottomWidth: 1,
-    borderColor: '#eaeaea',
-    paddingLeft: 10,
+    //borderBottomColor: '#D3D3D3',
+    //borderBottomWidth: 1,
+    paddingLeft: 6,
     marginLeft: 15,
     marginRight: 15,
     marginTop: 5,
@@ -48,12 +47,11 @@ export const styles = StyleSheet.create({
 
   },
   loginFormTextInputFocused: {
-    height: 43,
+    height: 40,
     fontSize: 14,
-    borderRadius: 5,
-    borderBottomWidth: 1,
-    borderColor: '#616161',
-    paddingLeft: 10,
+    paddingLeft: 6,
+    //borderBottomColor: '#b8b8b8',
+    //borderBottomWidth: 1,
     marginLeft: 15,
     marginRight: 15,
     marginTop: 5,
