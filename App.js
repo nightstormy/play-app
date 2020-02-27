@@ -4,9 +4,9 @@ import Navigator from './routes/Drawer'
 import Login from './auth/login'
 import Register from './auth/register'
 
-const App = props => {
+const App = (props) => {
 
-  const [register, setRegister] = useState(false)  
+  const [register, setRegister] = useState(false)
   const [login, setLogin] = useState(false)
   const [name, setName] = useState()
   const [email, setEmail] = useState()
@@ -41,7 +41,7 @@ const App = props => {
       })
   }
 
-  let content = <Login onRegister={onRegisterPress} onLogin={onLoginPress} onChangeEmail={setEmail} onChangePassword={setPassword} email={email} password={password} />
+  let content = <Login onRegister={onRegisterPress} onLogin={onLoginPress} onChangeEmail={setEmail} onChangePassword={setPassword} email={email} password={password} />    
 
   if (register === true) {
     content = <Register name={name} email={email} password={password} c_password={c_password} onGoBackLogin={onGoBackLogin} />
@@ -49,7 +49,6 @@ const App = props => {
       content = <Navigator />
     }
   }
-
 
   return (
     content
