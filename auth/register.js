@@ -1,14 +1,13 @@
 import React from 'react'
 import { styles } from "../global/global";
 import { Keyboard, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView, StyleSheet } from 'react-native';
-import { TextInput, withTheme, HelperText } from 'react-native-paper'
+import { TextInput, withTheme, Button } from 'react-native-paper'
 import TouchButton from '../components/TouchButton'
 import Colors from '../constants/colors'
 
 class Register extends React.Component {
     constructor(props) {
         const MAX_LENGTH = 20;
-
         super(props)
         this.state = {
             focus: false,
@@ -22,15 +21,17 @@ class Register extends React.Component {
         }
     }
 
-    _isUsernameValid = (name) => /^[a-zA-Z]*$/.test(name);
-    _isEmailValid = (email) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-    
-
     render() {
         const { name, email, password, c_password, onGoBackLogin, ...otherProps } = this.props
+        const {
+            theme: {
+                colors: { background },
+            },
+        } = this.props;
+
         const { focus, register } = this.state
 
-        console.log(!this._isEmailValid(this.state.register.email))
+        console.log(this.props.Theme)
 
         return (
             <KeyboardAvoidingView style={styles.containerView} behavior="padding" keyboardVerticalOffset={80}>
@@ -43,52 +44,41 @@ class Register extends React.Component {
                                 label="Nombre"
                                 placeholder="ej. Luis Salazar"
                                 value={register.name}
-                                error={!this._isUsernameValid(this.state.register.name)}
                                 onChangeText={name => this.setState({ register: { name } })}
+                                selectionColor="cyan"
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
-                            <HelperText
-                                style={styles2.helper}
-                                type="error"
-                                visible={!this._isUsernameValid(this.state.register.name)}
-                            >
-                                Error: Only letters are allowed
-                            </HelperText>
                             <TextInput
                                 style={styles2.inputContainerStyle}
                                 label="Correo"
                                 placeholder="ejemplo@ejemplo.com"
-                                error={this._isEmailValid(this.state.register.email)}
                                 value={register.email}
                                 onChangeText={email => this.setState({ register: { email } })}
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
-                            <HelperText
-                                style={styles2.helper}
-                                type="error"
-                                visible={this._isEmailValid(this.state.register.email)}
-                            >
-                                Error: Invalid Email
-                            </HelperText>
                             <TextInput
                                 style={styles2.inputContainerStyle}
                                 label="Contraseña"
                                 value={register.password}
                                 onChangeText={password => this.setState({ register: { password } })}
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
                             <TextInput
                                 style={styles2.inputContainerStyle}
                                 label="Confirmar Contraseña"
                                 value={register.c_password}
                                 onChangeText={c_password => this.setState({ register: { c_password } })}
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
                             <View style={styles2.buttonContainer}>
-                                <TouchButton style={styles2.registerButton}>
-                                    <Text style={styles2.textButton}>Registrar</Text>
-                                </TouchButton>
+                                <Button icon="account-arrow-right" mode="contained" style={styles2.registerButton} onPress={onGoBackLogin}>
+                                    <Text>Registrar</Text>
+                                </Button>
                             </View>
                             <View style={styles2.buttonContainer}>
-                                <TouchButton style={styles2.button} onPress={onGoBackLogin}>
-                                    <Text style={styles2.textButton}>Ya tengo cuenta</Text>
-                                </TouchButton>
+                                <Button icon="login" mode="contained" style={styles2.button} onPress={onGoBackLogin}>
+                                    <Text>Ya tengo cuenta</Text>
+                                </Button>
                             </View>
                         </View>
                     </View>
@@ -111,12 +101,14 @@ const styles2 = StyleSheet.create({
     button: {
         backgroundColor: Colors.accent,
         width: '95%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderRadius: 20
     },
     registerButton: {
         backgroundColor: Colors.skyblue,
         width: '95%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderRadius: 20
     },
     inputContainerStyle: {
         margin: 8,
