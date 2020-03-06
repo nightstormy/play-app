@@ -1,103 +1,84 @@
 import React from 'react'
 import { styles } from "../global/global";
-import { Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { Keyboard, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { TextInput, withTheme, Button } from 'react-native-paper'
 import TouchButton from '../components/TouchButton'
 import Colors from '../constants/colors'
 
-const Blue = "#428AF8";
-const Light_Gray = "#D3D3D3";
-
 class Register extends React.Component {
-    state = {
-        focus: false,
-        target: ''
-    }
-
-    onFocus = event => {
-        if (event.target) {
-            this.setState({
-                focus: true,
-                target: event.target
-            })
-            this.onFocus(event.target)
-        }
-    }
-
-    onBlur = event => {
-        if (this.state.target) {
-            this.onBlur(this.state.target)
-            this.setState({
-                focus: false,
-                target: ''
-            })
+    constructor(props) {
+        const MAX_LENGTH = 20;
+        super(props)
+        this.state = {
+            focus: false,
+            target: '',
+            register: {
+                name: '',
+                email: '',
+                password: '',
+                c_password: ''
+            }
         }
     }
 
     render() {
         const { name, email, password, c_password, onGoBackLogin, ...otherProps } = this.props
-        const { focus } = this.state
+        const {
+            theme: {
+                colors: { background },
+            },
+        } = this.props;
+
+        const { focus, register } = this.state
+
+        console.log(this.props.Theme)
 
         return (
-            <KeyboardAvoidingView style={styles.containerView} behavior="padding">
+            <KeyboardAvoidingView style={styles.containerView} behavior="padding" keyboardVerticalOffset={80}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.loginScreenContainer}>
                         <View style={styles.loginFormView}>
                             <Text style={styles.registerLogoText}>Nuevo Registro</Text>
                             <TextInput
-                                placeholder="Nombre"
-                                underlineColorAndroid={
-                                    focus ? Blue : Light_Gray
-                                }
-                                onFocus={(event) => this.onFocus(event)}
-                                onBlur={(event) => this.onBlur(event)}
-                                placeholderColor="#c4c3cb"
-                                style={styles.loginFormTextInput}
-                                {...otherProps}
+                                style={styles2.inputContainerStyle}
+                                label="Nombre"
+                                placeholder="ej. Luis Salazar"
+                                value={register.name}
+                                onChangeText={name => this.setState({ register: { name } })}
+                                selectionColor="cyan"
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
                             <TextInput
-                                placeholder="Correo"
-                                underlineColorAndroid={
-                                    focus ? Blue : Light_Gray
-                                }
-                                onFocus={(event) => this.onFocus(event)}
-                                onBlur={(event) => this.onBlur(event)}
-                                placeholderColor="#c4c3cb"
-                                style={styles.loginFormTextInput}
-                                {...otherProps}
+                                style={styles2.inputContainerStyle}
+                                label="Correo"
+                                placeholder="ejemplo@ejemplo.com"
+                                value={register.email}
+                                onChangeText={email => this.setState({ register: { email } })}
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
                             <TextInput
-                                placeholder="Contraseña"
-                                underlineColorAndroid={
-                                    focus ? Blue : Light_Gray
-                                }
-                                onFocus={(event) => this.onFocus(event)}
-                                onBlur={(event) => this.onBlur(event)}
-                                placeholderColor="#c4c3cb"
-                                style={styles.loginFormTextInput}
-                                {...otherProps}
-                                secureTextEntry={true}
+                                style={styles2.inputContainerStyle}
+                                label="Contraseña"
+                                value={register.password}
+                                onChangeText={password => this.setState({ register: { password } })}
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
                             <TextInput
-                                placeholder="Confirmar Contraseña"
-                                underlineColorAndroid={
-                                    focus ? Blue : Light_Gray
-                                }
-                                onFocus={(event) => this.onFocus(event)}
-                                onBlur={(event) => this.onBlur(event)}
-                                placeholderColor="#c4c3cb"
-                                style={styles.loginFormTextInput}
-                                {...otherProps}
-                                secureTextEntry={true}
+                                style={styles2.inputContainerStyle}
+                                label="Confirmar Contraseña"
+                                value={register.c_password}
+                                onChangeText={c_password => this.setState({ register: { c_password } })}
+                                theme={{ colors: { primary: "#38acff" } }}
                             />
                             <View style={styles2.buttonContainer}>
-                                <TouchButton style={styles2.registerButton}>
-                                    <Text style={styles2.textButton}>Registrar</Text>
-                                </TouchButton>
+                                <Button icon="account-arrow-right" mode="contained" style={styles2.registerButton} onPress={onGoBackLogin}>
+                                    <Text>Registrar</Text>
+                                </Button>
                             </View>
                             <View style={styles2.buttonContainer}>
-                                <TouchButton style={styles2.button} onPress={onGoBackLogin}>
-                                    <Text style={styles2.textButton}>Ya tengo cuenta</Text>
-                                </TouchButton>
+                                <Button icon="login" mode="contained" style={styles2.button} onPress={onGoBackLogin}>
+                                    <Text>Ya tengo cuenta</Text>
+                                </Button>
                             </View>
                         </View>
                     </View>
@@ -120,13 +101,22 @@ const styles2 = StyleSheet.create({
     button: {
         backgroundColor: Colors.accent,
         width: '95%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderRadius: 20
     },
     registerButton: {
         backgroundColor: Colors.skyblue,
         width: '95%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderRadius: 20
+    },
+    inputContainerStyle: {
+        margin: 8,
+        backgroundColor: 'white'
+    },
+    helper: {
+        flexShrink: 1
     }
 })
 
-export default Register
+export default withTheme(Register)
