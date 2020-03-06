@@ -18,7 +18,7 @@ const Login = props => {
   );
 
   const prueba = async () => {
-    fetch("http://192.168.206.12/backend_project/public/v1/prueba")
+    fetch("http://prueba.local/api/v1/prueba")
       .then(response => response.json())
       .then((responseJson) => {
         console.log(responseJson)

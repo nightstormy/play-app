@@ -22,7 +22,7 @@ class Register extends React.Component {
     }
 
     render() {
-        const { name, email, password, c_password, onGoBackLogin, ...otherProps } = this.props
+        const { name, email, password, c_password, onGoBackLogin, onRegister, ...otherProps } = this.props
         const {
             theme: {
                 colors: { background },
@@ -30,8 +30,6 @@ class Register extends React.Component {
         } = this.props;
 
         const { focus, register } = this.state
-
-        console.log(this.props.Theme)
 
         return (
             <KeyboardAvoidingView style={styles.containerView} behavior="padding" keyboardVerticalOffset={80}>
@@ -71,7 +69,7 @@ class Register extends React.Component {
                                 theme={{ colors: { primary: "#38acff" } }}
                             />
                             <View style={styles2.buttonContainer}>
-                                <Button icon="account-arrow-right" mode="contained" style={styles2.registerButton} onPress={onGoBackLogin}>
+                                <Button icon="account-arrow-right" mode="contained" style={styles2.registerButton} onPress={onRegister}>
                                     <Text>Registrar</Text>
                                 </Button>
                             </View>
