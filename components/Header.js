@@ -1,44 +1,57 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
-import Colors from '../constants/colors'
+const Header = props => {
 
-class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            header: ''
-        }
+    const { navigation, title } = props
+
+    const openMenu = () => {
+        navigation.openDrawer()
     }
 
-
-    componentDidMount() {
-    }
-
-    render() {
-
-        return (
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>{this.props.title}</Text>
+    return (
+        <ImageBackground source={require('../assets/dark_bg.png')} style={styles.header}>
+            <TouchableOpacity style={styles.icon} onPress={openMenu} activeOpacity={0.6}>
+                <MaterialIcons name='menu' size={28} style={{ color: 'white' }}/>
+            </TouchableOpacity>
+            <View style={styles.headerTitle}>
+                <Image source={require('../assets/logo_gris.png')} style={styles.headerImage} />
+                <Text style={styles.headerText}>{ title }</Text>
             </View>
-        )
-    }
+        </ImageBackground>
+    )
 }
 
 const styles = StyleSheet.create({
     header: {
-        width: '100%',
-        height: 90,
-        paddingTop: 36,
-        backgroundColor: Colors.primary,
+        paddingTop: 25,
+        height: 100,
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'black'
+    },
+    headerText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    icon: {
+        position: 'absolute',
+        left: 16,
+        bottom: 22,
+        color: 'white'
+    },
+    headerImage: {
+        width: 26,
+        height: 26,
+        marginHorizontal: 10
     },
     headerTitle: {
-        color: 'white',
-        fontSize: 18
+        flexDirection: 'row'
     }
-
-});
+    
+})
 
 export default Header;

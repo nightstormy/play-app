@@ -1,40 +1,24 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-class Card extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            Card: ''
-        }
-    }
-
-
-    componentDidMount() {
-    }
-
-    render() {
-
-        return (
-            <View style={{...styles.card, ...this.props.style}}>{this.props.children}</View>
-        )
-    }
+export default function Card({ style, children }){
+    return (
+        <View style={{...styles.card, ...style}}>{children}</View>
+    )
 }
 
 const styles = StyleSheet.create({
     card: {
-        shadowColor: 'black',
+        shadowColor: '#fff',
         shadowOffset: {
             width: 0,
             height: 2
         },
         shadowRadius: 6,
-        shadowOpacity: 0.26,
+        shadowOpacity: 0.3,
         elevation: 8,
         backgroundColor: 'white',
         padding: 25,
         borderRadius: 10
     },
 });
-
-export default Card;
